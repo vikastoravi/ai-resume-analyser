@@ -4,10 +4,13 @@ const connectToDB = require("./src/config/database")
 const cors = require("cors");
 
 connectToDB()
-app.use(cors({
+app.use(
+  cors({
     origin: "https://ai-resume-analyser-frontend-49oe.onrender.com",
-    credentials: true
-}));    
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+); 
 
 
 const PORT = process.env.PORT || 5000;
