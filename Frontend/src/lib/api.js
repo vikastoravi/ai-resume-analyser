@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://ai-resume-b.onrender.com",
+    baseURL: "https://skillbridge-ai-ts16.onrender.com",
     withCredentials: true
 })
 
