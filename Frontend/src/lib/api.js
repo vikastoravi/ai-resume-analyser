@@ -1,7 +1,12 @@
 import axios from "axios"
 
+// Determine baseURL based on environment
+const baseURL = import.meta.env.MODE === 'production' 
+    ? "https://skillbridge-ai-ts16.onrender.com"
+    : "http://localhost:5000"
+
 const api = axios.create({
-    baseURL: "https://skillbridge-ai-ts16.onrender.com",
+    baseURL,
     withCredentials: true
 })
 

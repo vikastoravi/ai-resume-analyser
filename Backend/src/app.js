@@ -6,8 +6,24 @@ const app = express()
 
 app.use(express.json())
 app.use(cookieParser())
+
+// Allow CORS for both local development and production
 app.use(cors({
-    origin: "https://ai-resume-analyser-frontend-49oe.onrender.com",
+    origin: function(origin, callback) {
+        const allowedOrigins = [
+            "http://localhost:5173",
+            "http://localhost:5174",
+            "http://127.0.0.1:5173",
+            "http://127.0.0.1:5174",
+            "https://ai-resume-analyser-frontend-49oe.onrender.com"
+        ]
+        
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true)
+        } else {
+            callback(new Error("CORS not allowed"))
+        }
+    },
     credentials: true
 }))
 
